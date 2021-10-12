@@ -29,7 +29,7 @@
         const ts_string = timestamp.toString();
         if (ts_string == "Invalid Date") return info.innerHTML = "You have not provided a valid snowflake.";
         
-        info.innerHTML = ts_string;
+        info.innerHTML = `Your account has been created at: <code>${ts_string}</code>.`;
       }, 100);
     </script>
   </body>
