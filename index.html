@@ -1,0 +1,33 @@
+<html>
+  <head>
+    <title>Hiven Snowflake to Timestamp Converter</title>
+  </head>
+  <body>
+    <p>This website is a W.I.P.</p>
+    <p>ID: <input id="id"></p>
+    <p id="info"></p>
+    
+    <script>
+      const HIVEN_EPOCH = 1562544e6;
+
+      function SnowflakeToDate(snowflake) {
+        const time = parseInt(snowflake, 10) / 4194304 + HIVEN_EPOCH;
+        const timestamp = !Number.isNaN(time) ? time : '';
+
+        return new Date(timestamp);
+      }
+      
+      setInterval(() => {
+        const info = document.getElementById("info");
+        const id = document.getElementById("id").value;
+        
+        if (!id) return info.innerHTML = "";
+
+        const timestamp = SnowflakeToDate();
+        const ts_string = timestamp.toString();
+        if (ts_string == "Invalid Date") return info.innerHTML = "You have not provided a valid snowflake.";
+        
+        info.innerHTML = ts_string;
+      }, 100);
+  </body>
+</html>
